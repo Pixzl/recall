@@ -5,12 +5,26 @@
 
 > Shared memory for Claude Code. An MCP server **and** a CLI that index your local Claude Code sessions and memory across every project — so Claude (and you) can find what was already figured out.
 
-`recall` builds a local, encrypted-on-disk SQLite index over the data Claude Code already keeps in `~/.claude/`:
+<!--
+  TODO before launch: drop a demo GIF here — a terminal recording of `recall search`
+  surfacing an answer from an old project. Record with `vhs` (charmbracelet/vhs) or
+  asciinema. This is the single highest-impact thing on this page.
+-->
+
+## Why
+
+Claude Code already saves every session to disk — but only *within* one project. Whatever you worked out in another repo three weeks ago is invisible from where you are now.
+
+`recall` makes that history searchable across **every** project, and hands Claude a tool to search it mid-conversation:
+
+> *"Have we hit this auth bug before?"* — Claude actually checks, instead of guessing.
+
+It builds a local, on-disk SQLite index over the data Claude Code already keeps in `~/.claude/`:
 
 - past sessions (`projects/*/<uuid>.jsonl`)
 - memory files (`projects/*/memory/*.md`)
 
-It exposes that index as:
+and exposes it two ways:
 
 1. an **MCP server** Claude Code can call (`recall_search`, `recall_get`)
 2. a **CLI** you run yourself: `recall search "..."`
@@ -29,11 +43,12 @@ npx pixzl --help
 
 Node 20+ is required (you already have it if Claude Code is installed).
 
+> **Heads up — the first `recall index` is the slow one.** It downloads a ~120 MB embedding model once, then indexes your whole `~/.claude/projects/` tree (5–15 min on a recent Mac). Every run after that is incremental and fast — and all of it happens locally, nothing is uploaded.
+
 ## Quickstart
 
 ```bash
-# 1. Build the index. First run downloads ~120 MB embedding model, then indexes
-#    your entire ~/.claude/projects/ tree. Expect 5-15 minutes on a recent Mac.
+# 1. Build the index (first run is slow — see the note above).
 recall index
 
 # 2. Search from the terminal
@@ -44,6 +59,22 @@ claude mcp add recall -- npx pixzl mcp
 ```
 
 After registration, Claude Code can call `recall_search` and `recall_get` in any new session. Try asking: *"Have we discussed this auth pattern before? Use recall_search to check."*
+
+### What a search looks like
+
+```
+$ recall search "how did we handle rate limiting"
+
+0.812  session 2026-03-12  ~/dev/my-api
+  3f9a1c2e-...
+  …switched to a token-bucket limiter in middleware; the sliding-window
+  version was dropping bursts under load. lib/ratelimit.ts…
+
+0.744  memory  2026-02-28  ~/dev/billing-service
+  a17be004-...
+  …rate limit is 100 req/min per API key, enforced at the gateway — not
+  in the app — so it survives restarts…
+```
 
 ## What gets indexed
 
