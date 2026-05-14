@@ -1,5 +1,8 @@
 # recall
 
+[![CI](https://github.com/drieken/recall/actions/workflows/ci.yml/badge.svg)](https://github.com/drieken/recall/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 > Shared memory for Claude Code. An MCP server **and** a CLI that index your local Claude Code sessions and memory across every project — so Claude (and you) can find what was already figured out.
 
 `recall` builds a local, encrypted-on-disk SQLite index over the data Claude Code already keeps in `~/.claude/`:
