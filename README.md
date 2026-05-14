@@ -20,9 +20,9 @@ It exposes that index as:
 ## Install
 
 ```bash
-npm install -g @recall/cli
+npm install -g pixzl
 # or run via npx without installing:
-npx @recall/cli --help
+npx pixzl --help
 ```
 
 Node 20+ is required (you already have it if Claude Code is installed).
@@ -38,7 +38,7 @@ recall index
 recall search "auth pattern across projects"
 
 # 3. Register the MCP server with Claude Code (one-time)
-claude mcp add recall -- npx @recall/cli mcp
+claude mcp add recall -- npx pixzl mcp
 ```
 
 After registration, Claude Code can call `recall_search` and `recall_get` in any new session. Try asking: *"Have we discussed this auth pattern before? Use recall_search to check."*

@@ -1,9 +1,26 @@
 {
-  "name": "@recall/cli",
+  "name": "pixzl",
   "version": "0.1.0",
   "description": "Shared memory for Claude Code — MCP server + CLI that indexes your local sessions and memory across all projects.",
   "type": "module",
   "license": "MIT",
+  "keywords": [
+    "mcp",
+    "claude-code",
+    "claude",
+    "cli",
+    "sqlite",
+    "semantic-search",
+    "embeddings"
+  ],
+  "homepage": "https://github.com/drieken/recall#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drieken/recall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/drieken/recall/issues"
+  },
   "bin": {
     "recall": "./dist/cli/index.js"
   },
