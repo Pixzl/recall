@@ -1,6 +1,6 @@
 {
   "name": "pixzl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared memory for Claude Code — MCP server + CLI that indexes your local sessions and memory across all projects.",
   "type": "module",
   "license": "MIT",
