@@ -216,6 +216,10 @@ export class Store {
   }): SearchHit[] {
     const k = Math.max(opts.limit * 5, 30);
     const fusionK = 60;
+    // RRF contributes at most 1/(fusionK+1) per list, so a hit ranked #1 in both
+    // the vector and BM25 lists tops out at 2/(fusionK+1) (~0.033). Normalise
+    // against that ceiling so callers see a meaningful 0–1 score instead.
+    const maxRrf = 2 / (fusionK + 1);
 
     const ftsQuery = this.escapeFts(opts.queryText);
 
@@ -302,7 +306,7 @@ export class Store {
       if (!c) continue;
       hits.push({
         id: c.id,
-        score,
+        score: score / maxRrf,
         snippet: this.makeSnippet(c.text_redacted, opts.queryText),
         sourceKind: c.source_kind,
         projectId: c.project_id,

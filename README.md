@@ -5,11 +5,7 @@
 
 > Shared memory for Claude Code. An MCP server **and** a CLI that index your local Claude Code sessions and memory across every project — so Claude (and you) can find what was already figured out.
 
-<!--
-  TODO before launch: drop a demo GIF here — a terminal recording of `recall search`
-  surfacing an answer from an old project. Record with `vhs` (charmbracelet/vhs) or
-  asciinema. This is the single highest-impact thing on this page.
--->
+![recall searching past Claude Code sessions from the terminal](https://raw.githubusercontent.com/drieken/recall/main/assets/demo.gif)
 
 ## Why
 
@@ -65,15 +61,15 @@ After registration, Claude Code can call `recall_search` and `recall_get` in any
 ```
 $ recall search "how did we handle rate limiting"
 
-0.812  session 2026-03-12  ~/dev/my-api
-  3f9a1c2e-...
-  …switched to a token-bucket limiter in middleware; the sliding-window
-  version was dropping bursts under load. lib/ratelimit.ts…
+1.000  session 2026-03-12  ~/dev/my-api
+  s_d84edb695ee7...
+  …token bucket lets a client spend accumulated capacity, which matches
+  how real clients behave. Bucket size = burst allowance, refill rate…
 
-0.744  memory  2026-02-28  ~/dev/billing-service
-  a17be004-...
-  …rate limit is 100 req/min per API key, enforced at the gateway — not
-  in the app — so it survives restarts…
+0.984  memory  2026-02-28  ~/dev/my-api
+  m_9fc1cf0f552a...
+  [memory:decisions.md] ## Rate limiting — token bucket per API key, 60
+  capacity, 1/sec refill, backed by Redis. Sliding window was rejected…
 ```
 
 ## What gets indexed
