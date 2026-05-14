@@ -1,11 +1,11 @@
 # recall
 
-[![CI](https://github.com/drieken/recall/actions/workflows/ci.yml/badge.svg)](https://github.com/drieken/recall/actions/workflows/ci.yml)
+[![CI](https://github.com/Pixzl/recall/actions/workflows/ci.yml/badge.svg)](https://github.com/Pixzl/recall/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 > Shared memory for Claude Code. An MCP server **and** a CLI that index your local Claude Code sessions and memory across every project — so Claude (and you) can find what was already figured out.
 
-![recall searching past Claude Code sessions from the terminal](https://raw.githubusercontent.com/drieken/recall/main/assets/demo.gif)
+![recall searching past Claude Code sessions from the terminal](https://raw.githubusercontent.com/Pixzl/recall/main/assets/demo.gif)
 
 ## Why
 

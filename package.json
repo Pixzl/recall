@@ -13,13 +13,13 @@
     "semantic-search",
     "embeddings"
   ],
-  "homepage": "https://github.com/drieken/recall#readme",
+  "homepage": "https://github.com/Pixzl/recall#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drieken/recall.git"
+    "url": "git+https://github.com/Pixzl/recall.git"
   },
   "bugs": {
-    "url": "https://github.com/drieken/recall/issues"
+    "url": "https://github.com/Pixzl/recall/issues"
   },
   "bin": {
     "recall": "./dist/cli/index.js"
