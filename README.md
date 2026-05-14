@@ -25,6 +25,8 @@ npm install -g pixzl
 npx pixzl --help
 ```
 
+> The npm package is named `pixzl`; the command it installs is `recall`.
+
 Node 20+ is required (you already have it if Claude Code is installed).
 
 ## Quickstart
